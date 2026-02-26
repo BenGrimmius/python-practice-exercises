@@ -12,7 +12,6 @@ Palindrome Challenge Rules:
 
 
 def isPalendrome(str):
-    stringToList = str.split("")
-    print(stringToList)
+    print(str[::-1])
 
-isPalendrome('hello')
+isPalendrome("hello")
