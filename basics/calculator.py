@@ -8,3 +8,8 @@ Calculator Challenge Rules:
   4. Handles invalid input (e.g., non-numeric values, unsupported operations).
   5. Handles division by zero with an error message instead of crashing.
 """
+
+def calculator(first, operator, second):
+    print("hello")
+
+calculator(1, 2, 3)
