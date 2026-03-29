@@ -56,7 +56,7 @@ def get_operation() -> str:
 
 
 def main() -> None:
-    print("Welcome to the Python Calculator")
+    print("Welcome to the Calculator")
 
     while True:
         operation = get_operation()
