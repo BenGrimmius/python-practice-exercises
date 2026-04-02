@@ -1,8 +1,9 @@
-with open("server.log", "r") as file:
+with open("server.log") as logFile:
     errorLineCount: int = 0
-    for line in file:
+    for line in logFile:
         if "ERROR" in line:
             errorLineCount += 1
-            with open("errors.txt", "w")
+            with open("errors.txt", "w") as file:
+                file.write(line)
     print(f"There are {errorLineCount} errors")
 
