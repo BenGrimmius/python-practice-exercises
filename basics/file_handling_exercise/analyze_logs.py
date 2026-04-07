@@ -1,27 +1,30 @@
 try:
     with open("server.log") as log_file:
         error_count: int = 0
-        error_line_points = []
         warning_count: int = 0
+        first_error: str | None = None
+        last_error: str | None = None
 
-        with open("errors.txt", "w+") as error_file:
+        with open("errors.txt", "w") as error_file:
+                for line in log_file:
+                    clean_line = line.strip()
 
-            for line in log_file:
-                if "WARNING" in line:
-                    warning_count += 1
-                elif  "ERROR" in line:
-                    error_line_points.append(error_file.tell())
-                    error_count += 1
-                    error_file.write(line)
+                    if "WARNING" in clean_line:
+                        warning_count += 1
+                    elif  "ERROR" in clean_line:
+                        error_count += 1
+                        error_file.write(line)
+                        if first_error == None:
+                             first_error = clean_line
 
-            error_file.seek(0)
-            first_line: str = error_file.readline()
-
-            error_file.seek(error_line_points[-1])
-            last_line = error_file.readline()
-
-            print(f"First error line: {first_line}\nLast error line: {last_line}")
-
+                        last_error = clean_line
+                             
+    if error_count > 0:
+         print(f"First Error Line: {first_error}")
+         print(f"Last Error Line: {last_error}")
+    else:
+         print("No Errors Found")
     print(f"Total Errors: {error_count}\nTotal Warnings: {warning_count}")
+
 except FileNotFoundError:
     print("Log file not found.")
