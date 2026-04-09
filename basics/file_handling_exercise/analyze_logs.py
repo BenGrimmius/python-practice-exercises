@@ -11,26 +11,34 @@ try:
         error_count: int = 0
         warning_count: int = 0
         first_error: str | None = None
+        first_error_line: int | None = None
         last_error: str | None = None
+        last_error_line: int | None = None
         line_number: int | None = None
 
         with open("errors.txt", "w") as error_file:
-                for line in log_file:
-                    clean_line = line.strip()
+            for line_number, line in enumerate(log_file, start=1):
+                clean_line = line.strip()
 
-                    if "WARNING" in clean_line:
-                        warning_count += 1
-                    elif  "ERROR" in clean_line:
-                        error_count += 1
-                        error_file.write(line)
-                        if first_error is None:
-                             first_error = clean_line
-                             line_number = enumerate(first_error)
-                             
+                if "WARNING" in clean_line:
+                    warning_count += 1
+                elif "ERROR" in clean_line:
+                    error_count += 1
+                    error_file.write(line)
+
+                    if first_error is None:
+                        first_error = clean_line
+                        first_error_line = line_number
 
                         last_error = clean_line
-                with open("report.txt", "w") as report_file:
-                        report_file.writelines(f"Number of Errors: {error_count}\nNumber of Warnings: {warning_count}\nFirst Warning")
+                        last_error_line = line_number
+            with open("report.txt", "w") as report_file:
+                report_file.writelines(
+                    f"Number of Errors: {error_count}"
+                    f"Number of Warnings: {warning_count}"
+                    f"First Error (Line {first_error_line}): {first_error}"
+                    f"Last Error (Line {last})"
+                )
                              
     if error_count > 0:
          print(f"First Error Line: {first_error}")

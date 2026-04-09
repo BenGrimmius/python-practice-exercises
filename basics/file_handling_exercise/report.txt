@@ -1,3 +1,0 @@
-Number of Errors: 3
-Number of Warnings: 1
-First Warning
