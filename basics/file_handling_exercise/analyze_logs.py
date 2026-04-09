@@ -1,20 +1,20 @@
 # File Handling Exercise that can take any .txt file or .log file
 # and can output the number of WARNINGS and ERRORS, the first ERROR, and the last ERROR.
 # 
-# TODO: send the error_count, the warning_count, the first error (with the line number), and the last error (with the line number) 
-
-
+# TODO: detect error, Error or ERROR using clean_line.upper()
+# TODO: replace input() with file_name = sys.argv[1]. (Need to import sys)
+# TODO: Process multiple files in a folder need to import os and use logs/
 try:
-    file_name = input("Enter log file name: ")
+    file_name = input("Enter log file name with extension: ")
 
-    with open(f"{file_name}.log") as log_file:
+    with open(f"{file_name}") as log_file:
         error_count: int = 0
         warning_count: int = 0
         first_error: str | None = None
         first_error_line: int | None = None
         last_error: str | None = None
         last_error_line: int | None = None
-        line_number: int | None = None
+        line_number = None
 
         with open("errors.txt", "w") as error_file:
             for line_number, line in enumerate(log_file, start=1):
@@ -30,22 +30,23 @@ try:
                         first_error = clean_line
                         first_error_line = line_number
 
-                        last_error = clean_line
-                        last_error_line = line_number
+                    last_error = clean_line
+                    last_error_line = line_number
+
             with open("report.txt", "w") as report_file:
                 report_file.writelines(
-                    f"Number of Errors: {error_count}"
-                    f"Number of Warnings: {warning_count}"
-                    f"First Error (Line {first_error_line}): {first_error}"
-                    f"Last Error (Line {last})"
+                    f"Number of Errors: {error_count}\n"
+                    f"Number of Warnings: {warning_count}\n"
+                    f"First Error on line {first_error_line}: {first_error}\n"
+                    f"Last Error on line {last_error_line}: {last_error}\n"
                 )
                              
     if error_count > 0:
-         print(f"First Error Line: {first_error}")
-         print(f"Last Error Line: {last_error}")
+         print(f"\nFirst Error on line {first_error_line}: {first_error}")
+         print(f"Last Error on line {last_error_line}: {last_error}")
     else:
          print("No Errors Found")
-    print(f"Total Errors: {error_count}\nTotal Warnings: {warning_count}")
+    print(f"Total Errors: {error_count}\nTotal Warnings: {warning_count}\n")
 
 except FileNotFoundError:
     print("Log file not found.")
