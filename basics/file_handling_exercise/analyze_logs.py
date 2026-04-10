@@ -1,20 +1,20 @@
 # File Handling Exercise that can take any .txt file or .log file
 # and can output the number of WARNINGS and ERRORS, the first ERROR, and the last ERROR.
 # 
-# TODO: detect error, Error or ERROR using clean_line.upper()
 # TODO: replace input() with file_name = sys.argv[1]. (Need to import sys)
 # TODO: Process multiple files in a folder need to import os and use logs/
 
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 
 
 try:
-    file_name = input("Enter log file name with extension: ")
+    file_name = sys.argv[0]
 
     file_extension_path: str = ""
-    time_stamp: str = datetime.now()
+    time_stamp: str = datetime.now().strftime("%H:%M:%S %m-%d-%Y")
 
     if file_name[-3:] == "txt":
         file_extension_path = "txt_files/"
@@ -36,9 +36,9 @@ try:
             for line_number, line in enumerate(log_file, start=1):
                 clean_line = line.strip()
 
-                if "WARNING" in clean_line:
+                if "WARNING" in clean_line.upper():
                     warning_count += 1
-                elif "ERROR" in clean_line:
+                elif "ERROR" in clean_line.upper():
                     error_count += 1
                     error_file.write(line)
 
