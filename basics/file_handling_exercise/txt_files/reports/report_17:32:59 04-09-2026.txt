@@ -1,4 +1,0 @@
-Number of Errors: 3
-Number of Warnings: 1
-First Error on line 2: ERROR Database connection failed
-Last Error on line 7: ERROR Disk full

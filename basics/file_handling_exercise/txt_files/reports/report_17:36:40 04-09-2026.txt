@@ -1,4 +1,0 @@
-Number of Errors: 22
-Number of Warnings: 6
-First Error on line 27: error_count: int = 0
-Last Error on line 67: except FileNotFoundError:

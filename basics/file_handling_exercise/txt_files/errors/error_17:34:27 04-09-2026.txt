@@ -1,3 +1,0 @@
-ERROR Database connection failed
-ERROR Timeout occurred
-eRROR Disk full
