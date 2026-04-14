@@ -1,0 +1,25 @@
+2026-04-14 09:15:02 INFO     Server starting on port 8080
+2026-04-14 09:15:03 INFO     Loading configuration file config.yaml
+2026-04-14 09:15:04 WARNING  Missing optional environment variable: CACHE_SIZE
+2026-04-14 09:15:05 INFO     Database connection established
+2026-04-14 09:15:07 INFO     User login attempt: username=admin
+2026-04-14 09:15:08 ERROR    Failed login attempt: username=admin, reason=Invalid password
+2026-04-14 09:15:10 INFO     Retrying login
+2026-04-14 09:15:12 INFO     User login successful: username=admin
+2026-04-14 09:15:15 INFO     Fetching user profile data
+2026-04-14 09:15:17 WARNING  Response time exceeded threshold: 1200ms
+2026-04-14 09:15:20 INFO     Writing data to cache
+2026-04-14 09:15:22 ERROR    Cache write failure: disk full
+2026-04-14 09:15:25 INFO     Attempting cache cleanup
+2026-04-14 09:15:27 INFO     Cache cleanup successful
+2026-04-14 09:15:30 INFO     Scheduled backup started
+2026-04-14 09:15:35 WARNING  Backup running slower than expected
+2026-04-14 09:15:40 ERROR    Backup failed: network timeout
+2026-04-14 09:15:45 INFO     Sending alert notification to admin
+2026-04-14 09:15:50 INFO     System health check running
+2026-04-14 09:15:52 INFO     CPU usage normal
+2026-04-14 09:15:55 WARNING  Memory usage high: 85%
+2026-04-14 09:16:00 ERROR    Out of memory exception
+2026-04-14 09:16:05 INFO     Restarting service
+2026-04-14 09:16:08 INFO     Service restarted successfully
+2026-04-14 09:16:10 INFO     Server running normally

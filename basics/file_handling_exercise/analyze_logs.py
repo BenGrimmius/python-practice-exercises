@@ -12,20 +12,25 @@ from datetime import datetime
 
 try:
 
-    if len(sys.argv) < 2:
-        pass
 
+    if len(sys.argv) < 2:
+        print("Usage: python analyze.log <file_name>")
+        sys.exit()
+    
     file_name = sys.argv[1]
 
-    file_extension_path: str = ""
-    time_stamp: str = datetime.now().strftime("%H:%M:%S %m-%d-%Y")
 
-    if file_name[-3:] == "txt":
+
+    file_extension_path: str = ""
+    time_stamp: str = datetime.now().strftime("%H-%M-%S %m-%d-%Y")
+
+    if file_name.endswith[".txt"]:
         file_extension_path = "txt_files/"
-    elif file_name[-3:] == "log":
+    elif file_name.endswith('.log'):
         file_extension_path = "logs/"
     else:
-        print("Cannot find file.")
+        print("Unsupported file type.")
+        sys.exit()
 
     with open(f"{file_extension_path}{file_name}") as log_file:
         error_count: int = 0
@@ -34,7 +39,6 @@ try:
         first_error_line: int | None = None
         last_error: str | None = None
         last_error_line: int | None = None
-        line_number = None
 
         with open(f"txt_files/errors/error_{time_stamp}.txt", "w") as error_file:
             for line_number, line in enumerate(log_file, start=1):
@@ -54,7 +58,7 @@ try:
                     last_error_line = line_number
 
             with open(f"txt_files/reports/report_{time_stamp}.txt", "w") as report_file:
-                report_file.writelines(
+                report_file.write(
                     f"Number of Errors: {error_count}\n"
                     f"Number of Warnings: {warning_count}\n"
                     f"First Error on line {first_error_line}: {first_error}\n"
