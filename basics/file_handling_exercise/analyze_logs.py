@@ -11,7 +11,11 @@ from datetime import datetime
 
 
 try:
-    file_name = sys.argv[0]
+
+    if len(sys.argv) < 2:
+        pass
+
+    file_name = sys.argv[1]
 
     file_extension_path: str = ""
     time_stamp: str = datetime.now().strftime("%H:%M:%S %m-%d-%Y")
