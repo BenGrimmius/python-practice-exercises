@@ -1,9 +1,0 @@
-server.log (line 2): ERROR Database connection failed
-server.log (line 5): ERROR Timeout occurred
-server.log (line 7): ERROR Disk fullserver2.log (line 6): 2026-04-14 09:15:08 ERROR    Failed login attempt: username=admin, reason=Invalid password
-server2.log (line 12): 2026-04-14 09:15:22 ERROR    Cache write failure: disk full
-server2.log (line 17): 2026-04-14 09:15:40 ERROR    Backup failed: network timeout
-server2.log (line 22): 2026-04-14 09:16:00 ERROR    Out of memory exception
-server3.log (line 1): 2026-04-14 09:15:22 ERROR    Cache write failure: disk full
-server3.log (line 6): 2026-04-14 09:15:40 ERROR    Backup failed: network timeout
-server3.log (line 11): 2026-04-14 09:16:00 ERROR    Out of memory exception

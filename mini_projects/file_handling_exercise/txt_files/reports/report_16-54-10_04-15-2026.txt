@@ -1,4 +1,0 @@
-Total Errors: 10
-Total Warnings: 7
-First Error (Line 2): ERROR Database connection failed
-Last Error (Line 11): 2026-04-14 09:16:00 ERROR    Out of memory exception
